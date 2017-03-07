@@ -7,7 +7,7 @@ from frappe.utils import cstr, flt
 @frappe.whitelist()
 def item_validate(item,method):
 	if item.get("accise_tax_applied")==1:
-		if item.get("accise_tax_weight")=="" or item.get("accise_tax_account")=="" or item.get("accise_tax_value")=="":
+		if item.get("accise_tax_weight")==0 or item.get("accise_tax_value")==0:
 			frappe.throw("Accise Tax weight cant be blank")
 
 def sales_order_accise_value(sales_order,method):
