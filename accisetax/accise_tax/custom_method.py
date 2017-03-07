@@ -27,3 +27,4 @@ def sales_order_accise_value(sales_order,method):
 			new_tax.cost_center = company[0].accise_cost_center
 			new_tax.description = "Accise Tax"
 			new_tax.tax_amount=tax
+	sales_order.calculate_taxes_and_totals()
