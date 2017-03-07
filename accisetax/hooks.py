@@ -69,14 +69,15 @@ app_license = "MIT"
 # Document Events
 # ---------------
 # Hook on document methods and events
-
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-#	}
-# }
+fixtures = ["Custom Field"]
+doc_events = {
+	"Item": {
+		"validate": "accisetax.accise_tax.custom_method.item_validate"
+	},
+	"Sales Order": {
+		"validate": "accisetax.accise_tax.custom_method.sales_order_accise_value"
+	}
+}
 
 # Scheduled Tasks
 # ---------------
