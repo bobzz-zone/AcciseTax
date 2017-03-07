@@ -71,9 +71,6 @@ app_license = "MIT"
 # Hook on document methods and events
 fixtures = ["Custom Field"]
 doc_events = {
-	"Item": {
-		"validate": "accisetax.accise_tax.custom_method.item_validate"
-	},
 	"Sales Order": {
 		"validate": "accisetax.accise_tax.custom_method.sales_order_accise_value"
 	}
