@@ -72,7 +72,7 @@ app_license = "MIT"
 fixtures = ["Custom Field"]
 doc_events = {
 	"Sales Order": {
-		"validate": "accisetax.accise_tax.custom_method.sales_order_accise_value"
+		"before_save": "accisetax.accise_tax.custom_method.sales_order_accise_value"
 	}
 }
 
