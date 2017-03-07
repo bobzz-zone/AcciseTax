@@ -8,11 +8,11 @@ from frappe.utils import cstr, flt
 def sales_order_accise_value(sales_order,method):
 	tax =0
 	for d in sales_order.get("items"):
-		item = frappe.db.get_values("Item",{"name":d.item_code},["accise_tax_applied","accise_tax_value","accise_tax_weight"],as_dict=True)
+		item = frappe.db.sql("""select accise_tax_applied,accise_tax_value,accise_tax_weight from tabItem where item_code="{}" """.format(d.item_code),as_dict=1)
 		if item.accise_tax_applied==1:
 			tax+=(flt(item.accise_tax_value)*flt(item.accise_tax_weight)*flt(d.qty))
 	if tax > 0:
-		company = frappe.db.get_values("Company",{"name":sales_order.get("company")},["accise_tax_account","accise_tax_cost_center"],as_dict=True)
+		company = frappe.db.sql("""select accise_tax_account,accise_tax_cost_center from tabCompany where name = "{}" """.format(sales_order.get("company")),as_dict=1)
 		found =0
 		for td in sales_order.get("taxes"):
 			if td.account_head ==company.accise_tax_account and td.cost_center == company.accise_tax_cost_center :
