@@ -12,10 +12,10 @@ def sales_order_accise_value(sales_order,method):
 		if item[0].accise_tax_applied==1:
 			tax+=(flt(item[0].accise_tax_value)*flt(item[0].accise_tax_weight)*flt(d.qty))
 	if tax > 0:
-		company = frappe.db.sql("""select accise_tax_account,accise_tax_cost_center from tabCompany where name = "{}" """.format(sales_order.get("company")),as_dict=1)
+		company = frappe.db.sql("""select accise_tax_account,accise_cost_center from tabCompany where name = "{}" """.format(sales_order.get("company")),as_dict=1)
 		found =0
 		for td in sales_order.get("taxes"):
-			if td.account_head ==company[0].accise_tax_account and td.cost_center == company[0].accise_tax_cost_center :
+			if td.account_head ==company[0].accise_tax_account and td.cost_center == company[0].accise_cost_center :
 				found=1
 				if td.tax_amount!=tax:
 					td.tax_amount=tax
@@ -24,6 +24,6 @@ def sales_order_accise_value(sales_order,method):
 			new_tax = sales_order.append("taxes",{})
 			new_tax.charge_type = "Actual"
 			new_tax.account_head=company[0].accise_tax_account
-			new_tax.cost_center = company[0].accise_tax_cost_center
+			new_tax.cost_center = company[0].accise_cost_center
 			new_tax.description = "Accise Tax"
 			new_tax.tax_amount=tax
