@@ -69,12 +69,8 @@ app_license = "MIT"
 # Document Events
 # ---------------
 # Hook on document methods and events
-fixtures = ["Custom Field"]
-doc_events = {
-	"Sales Order": {
-		"before_save": "accisetax.accise_tax.custom_method.sales_order_accise_value"
-	}
-}
+fixtures = ["Custom Field","Custom Script"]
+
 
 # Scheduled Tasks
 # ---------------
