@@ -69,7 +69,7 @@ app_license = "MIT"
 # Document Events
 # ---------------
 # Hook on document methods and events
-fixtures = ["Custom Field","Custom Script"]
+fixtures = ["Custom Field","Custom Script","Print Format"]
 
 
 # Scheduled Tasks
