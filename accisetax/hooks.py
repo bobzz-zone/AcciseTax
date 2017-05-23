@@ -10,7 +10,7 @@ app_icon = "octicon octicon-file-text"
 app_color = "grey"
 app_email = "bobzz.zone@gmail.com"
 app_license = "MIT"
-app_version = "0.0.2"
+app_version = "0.0.3"
 # Includes in <head>
 # ------------------
 
